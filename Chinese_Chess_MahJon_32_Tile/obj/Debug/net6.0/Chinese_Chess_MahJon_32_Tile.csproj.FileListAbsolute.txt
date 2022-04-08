@@ -1,0 +1,15 @@
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\bin\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.exe
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\bin\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.deps.json
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\bin\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.runtimeconfig.json
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\bin\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.dll
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\bin\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.pdb
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.csproj.AssemblyReference.cache
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.GeneratedMSBuildEditorConfig.editorconfig
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.AssemblyInfoInputs.cache
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.AssemblyInfo.cs
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.csproj.CoreCompileInputs.cache
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.dll
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\refint\Chinese_Chess_MahJon_32_Tile.dll
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.pdb
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\Chinese_Chess_MahJon_32_Tile.genruntimeconfig.cache
+H:\Dropbox\C#\Chinese_Chess_MahJong_32_Tile\Chinese_Chess_MahJon_32_Tile\Chinese_Chess_MahJon_32_Tile\obj\Debug\net6.0\ref\Chinese_Chess_MahJon_32_Tile.dll

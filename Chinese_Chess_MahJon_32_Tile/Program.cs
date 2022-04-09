@@ -28,13 +28,20 @@
       Player player1 = new();
       Player player2 = new();
       Wall wall = new();
+      CheckWin cw = new();
       // set player name
       player1.Name = "player1";
       player2.Name = "player2";
       // append tile to wall
       Function.AppendTileToWall(wall.Hand);
       Function.Shuffle(wall.Hand);
-      SetUp(player1, player2, wall);
+      // SetUp(player1, player2, wall);
+      player1.Hand.Add("7b");
+      player1.Hand.Add("7b");
+      player1.Hand.Add("7b");
+      player1.Hand.Add("7b");
+      player1.Hand.Add("7b");
+      Console.WriteLine(cw.CheckIsWinning(player1));
       // print hand and wall
       Print.PrintHand(player2);
       Print.PrintWall(wall);

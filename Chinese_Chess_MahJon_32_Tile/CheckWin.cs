@@ -3,20 +3,26 @@
     private List<string> probablypair = new();
     private List<string> pair = new();
     private static void CheckPair(List<string> probablypair, List<string> hand) {
-      foreach (string target in hand)
+      foreach (string target in hand) {
         if (hand.Count(targetvariable => targetvariable == target) >= 2 &&
-          !hand.Contains(target)) {
+          ! probablypair.Contains(target)) {
           probablypair.Add(target);
         } else if (hand.Contains("1b") && hand.Contains("1r")) {
           probablypair.Add("1b");
           probablypair.Add("1r");
         }
+      }
     }
 
-    private bool Sequence(List<string> hand) {
+    private bool SequenceOrTriple(List<string> hand) {
+      // sequence
       if ((int)hand[0][0] - 47 == (int)hand[1][0] - 48 &&
           (int)hand[1][0] - 47 == (int)hand[2][0] - 48)
         return true;
+      // triple
+      else if (hand[0] == hand[1] && hand[1] == hand[2])
+        return true;
+      // not meld
       else
         return false;
     }
@@ -25,7 +31,7 @@
       List<string> temphand = hand.ToList();
       temphand.Remove("1b");
       temphand.Remove("1r");
-      if (Sequence(temphand)) {
+      if (SequenceOrTriple(temphand)) {
         pair.Add("1b");
         pair.Add("1r");
         return true;
@@ -40,7 +46,7 @@
         // remove pair from temphand
         for (int j = 0; j < 2; j++)
           temphand.Remove(target);
-        if (Sequence(temphand)) {
+        if (SequenceOrTriple(temphand)) {
           pair.Add(target);
           return true;
         }
@@ -80,12 +86,12 @@
         if (player.Hand[0] == player.Hand[1]) {
           pair.Add(player.Hand[0]);
           return true;
-        // hand contains 1b and 1r
+        // hand[0] != hand[1] but hand contains 1b and 1r
         } else if (player.Hand.Contains("1b") && player.Hand.Contains("1r")) {
           pair.Add("1b");
           pair.Add("1r");
           return true;
-        // pair is different
+        // pair isn't 1b or 1r
         } else {
           return false;
         }

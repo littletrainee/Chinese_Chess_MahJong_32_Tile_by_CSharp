@@ -24,6 +24,8 @@
     }
 
     private static void Main() {
+      // declare bool
+      bool iswinning = false;
       // declare class
       Player player1 = new();
       Player player2 = new();
@@ -35,17 +37,20 @@
       // append tile to wall
       Function.AppendTileToWall(wall.Hand);
       Function.Shuffle(wall.Hand);
-      // SetUp(player1, player2, wall);
-      player1.Hand.Add("7b");
-      player1.Hand.Add("7b");
-      player1.Hand.Add("7b");
-      player1.Hand.Add("7b");
-      player1.Hand.Add("7b");
-      Console.WriteLine(cw.CheckIsWinning(player1));
+      SetUp(player1, player2, wall);
+      //player1.Hand.Add("1b");
+      //player1.Hand.Add("2b");
+      //player1.Hand.Add("3b");
+      //player1.Hand.Add("4r");
+      //player2.River.Add("4r");
+      //Console.WriteLine(cw.CheckIsWinning(player1,player2));
+      //foreach (string s in cw.Pair())
+      //  Console.WriteLine(s);
       // print hand and wall
-      Print.PrintHand(player2);
-      Print.PrintWall(wall);
-      Print.PrintHand(player1);
+      Print.PrintAll(player1, player2, wall);
+      iswinning = cw.CheckIsWinning(player1, player2);
+      Console.WriteLine(iswinning);
+      Function.DiscardFromHandToRiver(player1);
     }
   }
 }

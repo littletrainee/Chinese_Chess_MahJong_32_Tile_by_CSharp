@@ -37,6 +37,11 @@
 
     /// Discard
     public static void DiscardFromHandToRiver(Player player) {
+      Console.Write("Select whitch one you want to discard:");
+#pragma warning disable CS8602 // 可能 null 參考的取值 (dereference)。
+      char c = Console.ReadLine()[0];
+#pragma warning restore CS8602 // 可能 null 參考的取值 (dereference)。
+      Console.WriteLine(c);
 
     }
   }

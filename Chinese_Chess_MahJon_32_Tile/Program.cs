@@ -37,19 +37,19 @@
       // append tile to wall
       Function.AppendTileToWall(wall.Hand);
       Function.Shuffle(wall.Hand);
-      SetUp(player1, player2, wall);
-      //player1.Hand.Add("1b");
-      //player1.Hand.Add("2b");
-      //player1.Hand.Add("3b");
-      //player1.Hand.Add("4r");
-      //player2.River.Add("4r");
+      //SetUp(player1, player2, wall);
+      player1.Hand.Add("1b");
+      player1.Hand.Add("2b");
+      player1.Hand.Add("3b");
+      player1.Hand.Add("4r");
+      player1.Hand.Add("5r");
       //Console.WriteLine(cw.CheckIsWinning(player1,player2));
       //foreach (string s in cw.Pair())
       //  Console.WriteLine(s);
       // print hand and wall
-      Print.PrintAll(player1, player2, wall);
-      iswinning = cw.CheckIsWinning(player1, player2);
-      Console.WriteLine(iswinning);
+      //Print.PrintAll(player1, player2, wall);
+      //iswinning = cw.CheckIsWinning(player1, player2);
+      //Console.WriteLine(iswinning);
       Function.DiscardFromHandToRiver(player1);
     }
   }

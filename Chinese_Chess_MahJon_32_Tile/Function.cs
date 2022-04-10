@@ -20,7 +20,7 @@
 
     /// shuffle
     public static void Shuffle<T>(IList<T> list) {
-      Random rnd = new ();
+      Random rnd = new();
       int n = list.Count;
       while (n > 1) {
         n--;
@@ -37,12 +37,18 @@
 
     /// Discard
     public static void DiscardFromHandToRiver(Player player) {
+      string? s;
       Console.Write("Select whitch one you want to discard:");
-#pragma warning disable CS8602 // 可能 null 參考的取值 (dereference)。
-      char c = Console.ReadLine()[0];
-#pragma warning restore CS8602 // 可能 null 參考的取值 (dereference)。
-      Console.WriteLine(c);
-
+      s = Console.ReadLine();
+      if (!string.IsNullOrEmpty(s)) {
+        Console.WriteLine(s[0]);
+        //Console.WriteLine(player.Hand[s[0] - 49]);
+        Console.WriteLine(Chinese_Chess_MahJong_Tile.Tile[player.Hand[s[0] - 49]]);
+        player.River.Add(player.Hand[s[0] - 49]);
+        Print.PrintRiver(player);
+        player.Hand.RemoveAt(s[0] - 49);
+        Print.PrintHand(player, false);
+      }
     }
   }
 }

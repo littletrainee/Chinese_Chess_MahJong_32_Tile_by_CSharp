@@ -42,12 +42,9 @@
       s = Console.ReadLine();
       if (!string.IsNullOrEmpty(s)) {
         Console.WriteLine(s[0]);
-        //Console.WriteLine(player.Hand[s[0] - 49]);
         Console.WriteLine(Chinese_Chess_MahJong_Tile.Tile[player.Hand[s[0] - 49]]);
         player.River.Add(player.Hand[s[0] - 49]);
-        Print.PrintRiver(player);
         player.Hand.RemoveAt(s[0] - 49);
-        Print.PrintHand(player, false);
       }
     }
   }

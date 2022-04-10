@@ -1,7 +1,7 @@
 ﻿namespace Chinese_Chess_MahJon_32_Tile {
   internal class Print {
 
-    public static void PrintHand(Player player, bool numberindex) {
+    public static void Hand(Player player, bool numberindex) {
       if (numberindex) {
         for (int i = 0; i < player.Hand.Count; i++) {
           Console.Write(i + 1);
@@ -16,25 +16,37 @@
       Console.WriteLine();
     }
 
-    public static void PrintRiver(Player player) {
+    private static void River(Player player) {
       Console.Write(player.Name + "'s river:");
       foreach (string i in player.River)
         Console.Write(Chinese_Chess_MahJong_Tile.Tile[i] + " ");
       Console.WriteLine();
     }
 
-    private static void PrintWall(Wall wall) {
+    private static void Wall(Wall wall) {
       Console.Write(wall.Name + ":");
       foreach (string i in wall.Hand)
         Console.Write(Chinese_Chess_MahJong_Tile.Tile[i] + " ");
       Console.WriteLine();
     }
 
-    public static void PrintAll(Player player1, Player player2, Wall wall) {
-      PrintHand(player1, false);
-      PrintWall(wall);
-      PrintHand(player2, false);
+    public static void All(Player player1, Player player2, Wall wall) {
+      Hand(player2, false);
+      River(player2);
+      Wall(wall);
+      River(player1);
+      Hand(player1, false);
     }
 
+    // print meld choice
+    protected static void MeldChoice(Program.DeclareVariable dv) {
+      for (int i = 0; i < dv.templl.Count; i++) {
+        Console.Write(i + 1 + ". ");
+        for (int j = 0; j < dv.templl[i].Count; j++) {
+          Console.Write(Chinese_Chess_MahJong_Tile.Tile[dv.templl[i][j]] + " ");
+        }
+        Console.Write("  ");
+      }
+    }
   }
 }

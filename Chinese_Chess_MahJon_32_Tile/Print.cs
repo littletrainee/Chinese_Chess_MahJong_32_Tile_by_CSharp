@@ -39,11 +39,11 @@
     }
 
     // print meld choice
-    protected static void MeldChoice(Program.DeclareVariable dv) {
-      for (int i = 0; i < dv.templl.Count; i++) {
+    protected static void MeldChoice(List<List<string>> dv) {
+      for (int i = 0; i < dv.Count; i++) {
         Console.Write(i + 1 + ". ");
-        for (int j = 0; j < dv.templl[i].Count; j++) {
-          Console.Write(Chinese_Chess_MahJong_Tile.Tile[dv.templl[i][j]] + " ");
+        for (int j = 0; j < dv[i].Count; j++) {
+          Console.Write(Chinese_Chess_MahJong_Tile.Tile[dv[i][j]] + " ");
         }
         Console.Write("  ");
       }

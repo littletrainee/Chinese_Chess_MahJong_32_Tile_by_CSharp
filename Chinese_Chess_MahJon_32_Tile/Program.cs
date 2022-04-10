@@ -21,13 +21,13 @@
       for (int i = 0; i < 2; i++) {
         // each tiem 2 tile
         for (int j = 0; j < 2; j++)
-          Function.DrawFromTheFronta(player1.Hand, wall.Hand);
+          Function.DrawFromTheWallFront(player1.Hand, wall.Hand);
         // each tiem 2 tile
         for (int j = 0; j < 2; j++)
-          Function.DrawFromTheFronta(player2.Hand, wall.Hand);
+          Function.DrawFromTheWallFront(player2.Hand, wall.Hand);
       }
       // draw the 5th tile
-      Function.DrawFromTheFronta(player1.Hand, wall.Hand);
+      Function.DrawFromTheWallFront(player1.Hand, wall.Hand);
     }
 
     public static void Testdata(Player player1, Player player2) {
@@ -38,8 +38,8 @@
       player2.River.Add("3b");
     }
 
-    public bool Gameloop(DeclareVariable dv, CheckWin cw, Player player1, 
-                         Player player2) {
+    public static bool Loop(DeclareVariable dv, CheckWin cw, Player player1,
+                         Player player2, Wall wall) {
       // isn't winnig
       if (!dv.Iswinning) {
         // player1 discard from self hand to self river
@@ -49,16 +49,33 @@
         // if player2 isn't winning 
         if (!dv.Iswinning) {
           // check can make meld
-
+          Meld.Presence(player1, player2);
+          if (dv.Ismeld = Meld.MakeOrNot()) {
+            // make meld
+            Meld.Make(player2, player1);
+            // game continue
+            return true;
+          } else {
+            Function.DrawFromTheWallFront(player2.Hand, wall.Hand);
+            // check is winning(tsumo)
+            dv.Iswinning = cw.CheckIsWinning(player2, player1);
+            // if winning return false(gameover), otherwise true(game continue)
+            return !dv.Iswinning ? false : true;
+          }
+          // player2 is winning
+        } else {
+          // return false(gameover)
+          return false;
         }
       }
+      // return false(gameover)
       return false;
-
     }
 
     public struct DeclareVariable {
       public bool Iswinning { get; set; }
-      public List<List<string>> templl { get; set; }
+      public bool Gameloop { get; set; }
+      public bool Ismeld { get; set; }
     }
 
     private static void Main() {
@@ -68,7 +85,6 @@
       Player player2 = new();
       Wall wall = new();
       CheckWin cw = new();
-      Meld m = new();
       // set player name
       player1.Name = "player1";
       player2.Name = "player2";
@@ -81,9 +97,8 @@
       //dv.Iswinning = cw.CheckIsWinning(player1, player2);
       // Print player1 is win or not
       //Console.WriteLine(dv.Iswinning);
-      dv.templl = m.Presence(player1, player2);
-      //Console.WriteLine(m.Presence(player1, player2));
-      Meld.DoIt(dv, player1, player2);
+      dv.Gameloop = Program.Loop(dv, cw, player1, player2, wall);
+
 
     }
   }

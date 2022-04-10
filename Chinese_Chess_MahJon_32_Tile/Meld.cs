@@ -27,79 +27,134 @@
     }
     // use delegate
     private delegate void Check(string target, List<string> hand);
+
+    private static List<List<string>> Templl { get; set; } = new();
     // only chi 
-    public List<List<string>> Presence(Player thisplayer, Player otherplayer) {
+    public static void Presence(Player thisplayer, Player otherplayer) {
       string target = otherplayer.River.Last();
       Check c = new Check(M2M1);
       c += new Check(M1P1);
       c += new Check(P1P2);
       c(target, thisplayer.Hand);
-      return i;
+      Templl = i;
     }
 
     // three choice
-    private static List<string> ThreeChoice(Program.DeclareVariable dv) {
-      MeldChoice(dv);
+    private static void ThreeChoice() {
+      MeldChoice(Templl);
       Console.Write("\nWhitch One You Want Make Meld?");
+      // player enter choice
+      string? s = Console.ReadLine();
 #pragma warning disable CS8602 // 可能 null 參考的取值 (dereference)。
-      int i = Console.ReadLine()[0] - 48;
-      while (i < 0 || i > 3) {
+      // convert player enter choice to int
+      int i = s[0] - 48;
+      // check the enter is correct
+      while (i < 0 || i > 3 || s[0] != 'n' || s[0] != 'N') {
         Console.Write("Wrong Enter Please Renter:");
-        i = Console.ReadLine()[0] - 48;
+        s = Console.ReadLine();
+        i = s[0] - 48;
+      }
+      // player enter n
+      if (s[0] == 'n' || s[0] == 'N') {
 #pragma warning restore CS8602 // 可能 null 參考的取值 (dereference)。
-      } 
+        // return empty list
+        Temp = new();
+        // player want make meld
+      } else {
 #pragma warning disable CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      List<string> temp = (i) switch {
-        1 => dv.templl[0],
-        2 => dv.templl[1],
-        3 => dv.templl[3],
-      };
+        Temp = (i) switch {
+          1 => Templl[0],
+          2 => Templl[1],
+          3 => Templl[3],
+        };
 #pragma warning restore CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      return temp;
+      }
     }
 
     // two choice
-    private static List<string> TwoChoice(Program.DeclareVariable dv) {
-      MeldChoice(dv);
+    private static void TwoChoice() {
+      MeldChoice(Templl);
       Console.Write("\nWhitch One You Want Make Meld?");
+      // player enter choice
+      string? s = Console.ReadLine();
 #pragma warning disable CS8602 // 可能 null 參考的取值 (dereference)。
-      int i = Console.ReadLine()[0] - 48;
-      do {
+      // conver player enter choice to int
+      int i = s[0] - 48;
+      while (i < 0 || i > 2 || s[0] != 'n' || s[0] != 'N') {
         Console.Write("Wrong Enter Please Renter:");
-        i = Console.ReadLine()[0] - 48;
+        s = Console.ReadLine();
+        i = s[0] - 48;
+      }
+      // player enter n
+      if (s[0] == 'n' || s[0] == 'N') {
 #pragma warning restore CS8602 // 可能 null 參考的取值 (dereference)。
-      } while (i < 0 || i > 2);
+        // return empty list
+        Temp = new();
+        // player want amek meld
+      } else {
 #pragma warning disable CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      List<string> temp = (i) switch {
-        1 => dv.templl[0],
-        2 => dv.templl[1],
-      };
+        Temp = (i) switch {
+          1 => Templl[0],
+          2 => Templl[1],
+        };
 #pragma warning restore CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      return temp;
+      }
     }
 
     // one choice
-    private static List<string> OneChoice(Program.DeclareVariable dv) 
-      => dv.templl[0];
+    private static void OneChoice() {
+      Console.Write("Do You Want Make Meld?(y/n)");
+      // player enter choice
+      string? s = Console.ReadLine();
+#pragma warning disable CS8602 // 可能 null 參考的取值 (dereference)。
+      while (s[0] != 'y' || s[0] != 'Y' || s[0] != 'n' || s[0] != 'N') {
+        Console.Write("Wrong Enter Please Renter:");
+        s = Console.ReadLine();
+      }
+      if (s[0] == 'n' || s[0] == 'N') 
+#pragma warning restore CS8602 // 可能 null 參考的取值 (dereference)。
+        Temp = new();
+       else 
+        Temp = Templl[0];
+    }
 
+    private static List<string> Temp { get; set; } = new();
     // want make meld or not
-    public static void DoIt(Program.DeclareVariable dv,
-                                   Player thisplayer, Player otherplayer) {
-      // make choice
+    public static bool MakeOrNot() {
 #pragma warning disable CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      List<string> temp = (dv.templl.Count) switch {
-        1 => OneChoice(dv),
-        2 => TwoChoice(dv),
-        3 => ThreeChoice(dv)
-      };
+      // make choice
+      switch (Templl.Count) {
+        case 1:
+          OneChoice();
+          break;
+        case 2:
+          TwoChoice();
+          break;
+        case 3:
+          ThreeChoice();
+          break;
+      }
 #pragma warning restore CS8509 // switch 運算式未處理其輸入類型可能的值 (並非全部)。
-      foreach (string s in temp)
-        thisplayer.Hand.Remove(s);
-      // inser other player river last one to temp list
-      temp.Insert(1, otherplayer.River.Last());
-      // remove last one from other player river
-      otherplayer.River.RemoveAt(otherplayer.River.Count - 1);
-      thisplayer.Meld.Add(temp);
+      // temp isn't empty
+      if (!Temp.Any()) {
+        // make meld
+        return true;
+      } else {
+        // don't make meld
+        return false;
+      }
+    }
+
+    public static void Make(Player thisplayer, Player otherplayer) {
+        // remove element by temp step by step
+        foreach (string s in Temp)
+          thisplayer.Hand.Remove(s);
+        // inser other player river last one to temp list
+        Temp.Insert(1, otherplayer.River.Last());
+        // remove last one from other player river
+        otherplayer.River.RemoveAt(otherplayer.River.Count - 1);
+        // add meld to this player meld list
+        thisplayer.Meld.Add(Temp);
 
     }
   }

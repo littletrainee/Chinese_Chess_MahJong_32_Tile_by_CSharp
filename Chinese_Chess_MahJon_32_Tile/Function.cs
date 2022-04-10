@@ -30,7 +30,7 @@
     }
 
     /// Draw 
-    public static void DrawFromTheFronta(List<string> player, List<string> wall) {
+    public static void DrawFromTheWallFront(List<string> player, List<string> wall) {
       player.Add(wall.First());
       wall.RemoveAt(0);
     }
